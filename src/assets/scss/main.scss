@@ -1,0 +1,8 @@
+@import 'assets/scss/abstracts/colors.scss';
+
+.main {
+	background-color: map-get($background, 'main');
+	color: map-get($text, 'main');
+	min-height: 100vh;
+	min-width: 100vw;
+}
