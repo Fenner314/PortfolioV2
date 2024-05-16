@@ -1,1 +1,61 @@
-.Header {}
+@import 'assets/scss/utilities';
+
+.Header {
+	top: 0;
+	position: sticky;
+	width: 50%;
+	max-height: 100vh;
+}
+
+.inner {
+	display: flex;
+	flex-direction: column;
+}
+
+.controls {
+	@extend .w-full;
+	display: flex;
+	gap: 1rem;
+}
+
+.control {
+	display: flex;
+	gap: 0.5rem;
+	cursor: pointer;
+	user-select: none;
+
+	input {
+		appearance: none;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 6px;
+		background-color: map-get($text, '300');
+		cursor: pointer;
+
+		&:hover {
+			background-color: darken(map-get($text, '300'), 10%);
+		}
+	}
+	input:checked {
+		appearance: auto;
+		clip-path: inset(0% 0% 0% 0% round 6px);
+		accent-color: map-get($primary, 'main');
+		&:hover {
+			background-color: darken(map-get($primary, 'main'), 20%);
+		}
+	}
+}
+
+.header {
+	margin-top: 2rem;
+	h1 {
+		line-height: 1.1;
+	}
+	@extend .w-full;
+	max-width: 436px;
+}
+
+.tag {
+	margin-top: 1rem;
+	max-width: 48ch;
+}

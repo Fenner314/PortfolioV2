@@ -1,0 +1,10 @@
+@import 'assets/scss/abstracts/colors.scss';
+
+.w-full {
+	width: 100%;
+}
+
+.emphasis {
+	color: map-get($text, '300');
+	font-weight: 600;
+}
