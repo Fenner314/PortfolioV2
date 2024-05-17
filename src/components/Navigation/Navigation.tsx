@@ -1,9 +1,9 @@
-import React, { FC, useContext, useEffect, useState } from 'react'
+import React, { FC, useContext, useEffect, useRef, useState } from 'react'
 import './Navigation.scss'
+import { useLocation } from 'react-router-dom'
 import { Url, UrlOption } from 'models/url.model'
 import { Offsets } from 'models/offsets.interface'
 import { Context } from 'App'
-import { useLocation } from 'react-router-dom'
 
 interface NavigationProps {}
 
@@ -11,11 +11,11 @@ const Navigation: FC<NavigationProps> = () => {
 	const initialUrl: Url = window.location.href?.split('#')[1] as Url
 	const [activeUrl, setActiveUrl] = useState<Url>(initialUrl ?? UrlOption.About)
 	const [offsets, setOffsets] = useState<Offsets>({})
+	const [offsetsOrderedArray, setOffsetsOrderedArray] = useState<number[]>([])
 	const [scrollPosition, setScrollPosition] = useState(0)
+	const location = useLocation()
 
 	const { controls } = useContext(Context)
-
-	const location = useLocation()
 
 	const handleScroll = () => {
 		const position = window.scrollY
@@ -28,6 +28,7 @@ const Navigation: FC<NavigationProps> = () => {
 		setCurrentSectionsAsOffsets()
 		const hash = document.getElementById(location.hash.slice(1))
 		hash?.scrollIntoView()
+		document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth'
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
@@ -35,7 +36,12 @@ const Navigation: FC<NavigationProps> = () => {
 	}, [])
 
 	useEffect(() => {
-		const offsetsOrderedArray: any = Object.entries(offsets)
+		setOffsetsOrderedArray(
+			Object.values(offsets).sort((a: number, b: number) => a - b)
+		)
+	}, [offsets])
+
+	useEffect(() => {
 		for (let i = 0; i < offsetsOrderedArray.length; i++) {
 			if (
 				scrollPosition >= offsetsOrderedArray[i] &&
