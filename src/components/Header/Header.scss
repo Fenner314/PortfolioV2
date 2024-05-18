@@ -5,11 +5,18 @@
 	position: sticky;
 	width: 50%;
 	max-height: 100vh;
+	height: 100%;
+	padding-top: 4rem;
+	padding-bottom: 6rem;
 }
 
 .inner {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+}
+
+.content {
 }
 
 .controls {
@@ -58,4 +65,18 @@
 .tag {
 	margin-top: 1rem;
 	max-width: 48ch;
+}
+
+.footer {
+	display: flex;
+	gap: 1.25rem;
+	.link-icon {
+		fill: map-get($text, 'main');
+		cursor: pointer;
+		transition: fill 50ms;
+
+		&:hover {
+			fill: map-get($text, '300');
+		}
+	}
 }
