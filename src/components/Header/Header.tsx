@@ -5,11 +5,22 @@ import { Context } from 'App'
 import { ReactComponent as Github } from '../../assets/icons/github.svg'
 import { ReactComponent as LinkedIn } from '../../assets/icons/linkedin.svg'
 import { ReactComponent as SHT } from '../../assets/icons/sht.svg'
+import { Control } from 'models/controls.interface'
+import { StorageService } from 'services/storage.service'
+import { StorageKeys } from 'models/storage-keys.enum'
 
 interface HeaderProps {}
 
+const storageService = new StorageService()
+
 const Header: FC<HeaderProps> = () => {
 	const { controls, setControls } = useContext(Context)
+
+	const handleControlToggle = (control: Control, checked: boolean) => {
+		const key = control === 'software' ? StorageKeys.Software : StorageKeys.Music
+		storageService.set(key, checked)
+		setControls((prev) => ({ ...prev, [control]: checked }))
+	}
 
 	return (
 		<div className='Header'>
@@ -20,9 +31,7 @@ const Header: FC<HeaderProps> = () => {
 							<input
 								type='checkbox'
 								defaultChecked={controls.software}
-								onChange={(e) =>
-									setControls((prev: any) => ({ ...prev, software: e.target.checked }))
-								}
+								onChange={(e) => handleControlToggle('software', e.target.checked)}
 								name='software'
 								id='software'
 							/>
@@ -32,9 +41,7 @@ const Header: FC<HeaderProps> = () => {
 							<input
 								type='checkbox'
 								defaultChecked={controls.music}
-								onChange={(e) =>
-									setControls((prev: any) => ({ ...prev, music: e.target.checked }))
-								}
+								onChange={(e) => handleControlToggle('music', e.target.checked)}
 								name='music'
 								id='music'
 							/>

@@ -57,13 +57,14 @@ const Navigation: FC<NavigationProps> = () => {
 				break
 			}
 		}
-	}, [scrollPosition])
+	}, [scrollPosition, offsetsOrderedArray])
 
 	useEffect(() => {
 		setCurrentSectionsAsOffsets()
 	}, [controls])
 
 	const setCurrentSectionsAsOffsets = () => {
+		console.log('setCurrentSectionsAsOffsets called')
 		const offsetObj: Offsets<HTMLAnchorElement> = {
 			[UrlOption.About]: document.getElementById('about') as HTMLAnchorElement,
 			[UrlOption.Education]: document.getElementById(
