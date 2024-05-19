@@ -1,6 +1,8 @@
 import React, { FC, useContext } from 'react'
 import './Content.scss'
 import { Context } from 'App'
+import About from 'components/About/About'
+import Section from 'components/Common/Section/Section'
 
 interface ContentProps {}
 
@@ -10,11 +12,17 @@ const Content: FC<ContentProps> = () => {
 	return (
 		<div
 			className='Content'
-			style={{ display: 'flex', flexDirection: 'column', height: 'max-content' }}
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				height: 'max-content',
+				paddingTop: '4rem',
+				paddingBottom: '6rem',
+			}}
 		>
-			<div style={{ display: 'block', width: '100%', height: '100vh' }} id='about'>
-				About
-			</div>
+			<Section id='about'>
+				<About />
+			</Section>
 			{controls.music ? (
 				<div
 					style={{ display: 'block', width: '100%', height: '100vh' }}

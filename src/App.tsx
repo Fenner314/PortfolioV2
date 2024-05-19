@@ -17,8 +17,8 @@ export const Context = React.createContext({} as ContextProps)
 
 function App() {
 	const [controls, setControls] = useState<Controls>({
-		software: storageService.get(StorageKeys.Software) == false ? false : true,
-		music: storageService.get(StorageKeys.Music) == false ? false : true,
+		software: storageService.get(StorageKeys.Software) === false ? false : true,
+		music: storageService.get(StorageKeys.Music) === false ? false : true,
 	})
 
 	const contextValue = {

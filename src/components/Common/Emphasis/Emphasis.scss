@@ -1,0 +1,12 @@
+@import 'assets/scss/abstracts/colors.scss';
+
+.Emphasis {
+	font-weight: 600;
+	color: map-get($text, '300');
+	display: inline-block;
+
+	&:hover {
+		text-decoration: underline;
+		color: map-get($primary, 'main');
+	}
+}
