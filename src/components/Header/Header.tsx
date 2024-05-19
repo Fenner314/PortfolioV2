@@ -1,4 +1,11 @@
-import React, { FC, useContext } from 'react'
+import React, {
+	FC,
+	ReactNode,
+	useCallback,
+	useContext,
+	useEffect,
+	useState,
+} from 'react'
 import './Header.scss'
 import Navigation from 'components/Navigation/Navigation'
 import { Context } from 'App'
@@ -8,19 +15,74 @@ import { ReactComponent as SHT } from '../../assets/icons/sht.svg'
 import { Control } from 'models/controls.interface'
 import { StorageService } from 'services/storage.service'
 import { StorageKeys } from 'models/storage-keys.enum'
+import { SubTitle } from 'models/sub-title.type'
 
 interface HeaderProps {}
 
 const storageService = new StorageService()
 
+const subTitleValues: { software: SubTitle[]; music: SubTitle[] } = {
+	software: ['Software Developer', 'Consultant'],
+	music: ['Trombonist', 'Educator'],
+}
+
+const tags = {
+	software:
+		'I help businesses grow by building engaging and inspiring digital products.',
+	music:
+		'I promote positive interactions with music  through well-rehearsed performance and thoughtful teaching. ',
+	both:
+		'I help businesses grow by using my musical background to bring unique perspectives when working on teams and while building engaging and inspiring digital products.',
+}
+
 const Header: FC<HeaderProps> = () => {
 	const { controls, setControls } = useContext(Context)
+	const [subTitles, setSubTitles] = useState<ReactNode[]>([])
 
 	const handleControlToggle = (control: Control, checked: boolean) => {
 		const key = control === 'software' ? StorageKeys.Software : StorageKeys.Music
 		storageService.set(key, checked)
 		setControls((prev) => ({ ...prev, [control]: checked }))
 	}
+
+	const calculateSubTitles = useCallback(() => {
+		let subTitlesTemp: SubTitle[] = []
+		Object.keys(controls).forEach((control) => {
+			const typedControl = control as Control
+			if (controls[typedControl]) {
+				subTitlesTemp = subTitlesTemp.concat(subTitleValues[typedControl])
+			}
+		})
+		const subTitlesElements: ReactNode[] = []
+		subTitlesTemp.forEach((text: SubTitle, index: number) => {
+			subTitlesElements.push(<h3 className='sub-title'>{text}</h3>)
+
+			if (index + 1 < subTitlesTemp?.length) {
+				if (index % 2 == 0) {
+					subTitlesElements.push(<span className='divider'> | </span>)
+				} else {
+					subTitlesElements.push(<br />)
+				}
+			}
+		})
+
+		setSubTitles(subTitlesElements)
+		return subTitlesElements
+	}, [controls])
+
+	const renderTag = () => {
+		if (controls.software && controls.music) {
+			return tags.both
+		} else if (controls.software) {
+			return tags.software
+		} else if (controls.music) {
+			return tags.music
+		}
+	}
+
+	useEffect(() => {
+		calculateSubTitles()
+	}, [controls, calculateSubTitles])
 
 	return (
 		<div className='Header'>
@@ -50,13 +112,8 @@ const Header: FC<HeaderProps> = () => {
 					</div>
 					<div className='header'>
 						<h1 className='title'>Jacob Fenner</h1>
-						<div className='sub-titles'>
-							<h3>Software Developer | Consultant</h3>
-						</div>
-						<p className='tag'>
-							I help businesses grow by building engaging and inspiring digital
-							products.
-						</p>
+						<div className='sub-titles'>{subTitles.map((title) => title)}</div>
+						<p className='tag'>{renderTag()}</p>
 					</div>
 					<Navigation></Navigation>
 				</div>

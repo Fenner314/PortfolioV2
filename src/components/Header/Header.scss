@@ -62,6 +62,17 @@
 	max-width: 436px;
 }
 
+.sub-title,
+.divider {
+	display: inline-block;
+}
+
+.divider {
+	font-weight: 600;
+	color: map-get($text, '300');
+	margin: 0 0.5rem;
+}
+
 .tag {
 	margin-top: 1rem;
 	max-width: 48ch;
