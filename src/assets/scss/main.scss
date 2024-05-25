@@ -7,10 +7,6 @@
 	padding: 0;
 }
 
-html {
-	// scroll-behavior: smooth;
-}
-
 h1 {
 	font-size: 4rem; // 48px
 	font-weight: 700;
@@ -20,6 +16,11 @@ h1 {
 h3 {
 	font-size: 1.25rem; // 20px
 	@extend .emphasis;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }
 
 .main {

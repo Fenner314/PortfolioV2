@@ -1,0 +1,18 @@
+@import 'assets/scss/abstracts/colors.scss';
+
+.Tech {
+	&.software {
+		background-color: rgba(map-get($primary, '400'), 0.1);
+		color: map-get($primary, 'main');
+	}
+
+	&.music {
+		background-color: rgba(map-get($secondary, '400'), 0.1);
+		color: map-get($secondary, 'main');
+	}
+
+	display: inline-block;
+	padding: 0.35rem 1rem;
+	border-radius: 9999px;
+	font-weight: 600;
+}
