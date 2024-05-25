@@ -1,8 +1,7 @@
 import { Control } from './controls.interface'
 
 export interface CardData {
-	startYear?: number
-	endYear?: number | string
+	dataType: 'experience' | 'education' | 'project' | 'media'
 	imageSrc?: string
 	title: string
 	org?: string

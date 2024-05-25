@@ -6,6 +6,7 @@ import Section from 'components/Common/Section/Section'
 import Experience from 'components/Experience/Experience'
 import Education from 'components/Education/Education'
 import Projects from 'components/Projects/Projects'
+import Media from 'components/Media/Media'
 
 interface ContentProps {}
 
@@ -39,7 +40,11 @@ const Content: FC<ContentProps> = () => {
 					<Projects />
 				</Section>
 			)}
-			{controls.music ? <div id='media'>Media</div> : null}
+			{controls.music && (
+				<Section id='media'>
+					<Media />
+				</Section>
+			)}
 			<div id='contact'>Contact</div>
 		</div>
 	)

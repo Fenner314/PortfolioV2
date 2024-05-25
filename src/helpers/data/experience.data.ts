@@ -1,7 +1,8 @@
-import { CardData } from 'models/card-data.interface'
+import { ExperienceData } from 'models/experience-data.interface'
 
-export const softwareExperience: CardData[] = [
+export const softwareExperience: ExperienceData[] = [
 	{
+		dataType: 'experience',
 		startYear: 2021,
 		endYear: 'present',
 		title: 'Software Developer',
@@ -30,6 +31,7 @@ export const softwareExperience: CardData[] = [
 		link: 'https://www.sentrilock.com/',
 	},
 	{
+		dataType: 'experience',
 		startYear: 2021,
 		endYear: 'present',
 		title: 'Software Developer II',
@@ -46,6 +48,7 @@ export const softwareExperience: CardData[] = [
 		link: 'https://sevenhillstechnology.com/',
 	},
 	{
+		dataType: 'experience',
 		startYear: 2020,
 		endYear: 2021,
 		title: 'Junior Developer',
@@ -60,6 +63,7 @@ export const softwareExperience: CardData[] = [
 			'https://siouxfalls.business/entrepreneur-strives-to-cut-time-spent-waiting-for-table/',
 	},
 	{
+		dataType: 'experience',
 		startYear: 2020,
 		endYear: 'present',
 		title: 'Freelance Software Developer',
@@ -80,8 +84,9 @@ export const softwareExperience: CardData[] = [
 	},
 ]
 
-export const musicExperience: CardData[] = [
+export const musicExperience: ExperienceData[] = [
 	{
+		dataType: 'experience',
 		startYear: 2017,
 		endYear: 'present',
 		title: 'Alternate Trombonist',
@@ -95,6 +100,7 @@ export const musicExperience: CardData[] = [
 		link: 'https://www.siouxcitysymphony.org/',
 	},
 	{
+		dataType: 'experience',
 		startYear: 2017,
 		endYear: 'present',
 		title: 'Private Instructor',
@@ -107,6 +113,7 @@ export const musicExperience: CardData[] = [
 		index: 2.0,
 	},
 	{
+		dataType: 'experience',
 		startYear: 2015,
 		endYear: 2019,
 		title: 'Assistant Director of Marching Band',
@@ -122,6 +129,7 @@ export const musicExperience: CardData[] = [
 		link: 'https://www.brandonvalleybands.com/',
 	},
 	{
+		dataType: 'experience',
 		startYear: 2014,
 		endYear: 2015,
 		title: 'Marching Member',

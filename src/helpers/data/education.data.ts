@@ -1,7 +1,8 @@
-import { CardData } from 'models/card-data.interface'
+import { EducationData } from 'models/education-data.interface'
 
-export const educationData: CardData[] = [
+export const educationData: EducationData[] = [
 	{
+		dataType: 'education',
 		startYear: 2015,
 		endYear: 2019,
 		title: 'Bachelor of Arts in Music Education',
@@ -19,6 +20,7 @@ export const educationData: CardData[] = [
 		link: 'https://www.augie.edu/school-music',
 	},
 	{
+		dataType: 'education',
 		startYear: 2019,
 		endYear: 2021,
 		title: 'Master of Music in Trombone Performance',

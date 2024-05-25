@@ -7,9 +7,11 @@ interface ProjectsProps {}
 
 const Projects: FC<ProjectsProps> = () => {
 	const renderProjects = () =>
-		projectsData.map((project, index) => <Card key={index} data={project} />)
+		projectsData.map((project, index) => {
+			return <Card key={index} data={project} />
+		})
 
-	return <div className='Experience'>{renderProjects()}</div>
+	return <div className='Projects'>{renderProjects()}</div>
 }
 
 export default Projects

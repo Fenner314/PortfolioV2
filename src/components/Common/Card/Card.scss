@@ -34,12 +34,30 @@
 		}
 	}
 
-	.image {
+	.image,
+	.media {
 		width: 90%;
 		height: 80px;
 		object-fit: cover;
 		border-radius: 4px;
 		border: 2px solid map-get($neutral, '700');
+	}
+
+	.media {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:hover {
+			border-color: map-get($text, 'main');
+
+			.play-button {
+				fill: map-get($text, '300');
+			}
+		}
+	}
+
+	.play-button {
+		fill: map-get($text, 'main');
 	}
 
 	.grid {
