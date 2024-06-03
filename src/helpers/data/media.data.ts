@@ -7,8 +7,13 @@ import Grondahl from 'assets/audio/grondahl-concerto.mp3'
 export const mediaData: MediaData[] = [
 	{
 		dataType: 'media',
-		mediaType: 'audio',
-		audioSrc: Clarke,
+		media: {
+			type: 'audio',
+			src: Clarke,
+			format: 'audio/mpeg',
+			active: false,
+			playing: false,
+		},
 		title: 'Carnival of Venice, Herbert L. Clarke',
 		description: `After performing this work solo with the Augustana band, 
         I performed this multiple times during a tour throughout China.`,
@@ -17,8 +22,13 @@ export const mediaData: MediaData[] = [
 	},
 	{
 		dataType: 'media',
-		mediaType: 'audio',
-		audioSrc: Grondahl,
+		media: {
+			type: 'audio',
+			src: Grondahl,
+			format: 'audio/mpeg',
+			active: false,
+			playing: false,
+		},
 		title: 'Trombone Concerto, Launy Grondahl',
 		description: `I performed this solo with the Augustana Orchestra as a 
 			result of winning the Concerto/Aria competition in 2018. Four total 
@@ -28,9 +38,14 @@ export const mediaData: MediaData[] = [
 	},
 	{
 		dataType: 'media',
-		mediaType: 'audio',
-		audioSrc: Malaguena,
-		title: 'Carnival of Venice, Herbert L. Clarke',
+		media: {
+			type: 'audio',
+			src: Malaguena,
+			format: 'audio/mpeg',
+			active: false,
+			playing: false,
+		},
+		title: 'Malaguena Extreme and Variations arr. Jerry Ascione',
 		description: `A trombone quartet arrangement of a popular jazz tune played 
 			with the Augustana Band. Originally arranged for the US Air Force Band, I 
 			wrote a grant so our university could get the funding to perform this. Our 
@@ -40,8 +55,13 @@ export const mediaData: MediaData[] = [
 	},
 	{
 		dataType: 'media',
-		mediaType: 'audio',
-		audioSrc: SeniorRecital,
+		media: {
+			type: 'audio',
+			src: SeniorRecital,
+			format: 'audio/mpeg',
+			active: false,
+			playing: false,
+		},
 		title: 'Senior Degree Recital',
 		description: `The culmination of my undergraduate studies at Augustana 
 			University. Inluces works by Mozart, Rabe, Pryor, Adler, Cosma, and Sparke on 

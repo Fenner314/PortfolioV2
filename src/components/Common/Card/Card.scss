@@ -104,4 +104,20 @@
 		flex-wrap: wrap;
 		gap: 0.35rem 0.5rem;
 	}
+
+	audio {
+		height: 36px;
+		width: 100%;
+	}
+
+	.show {
+		opacity: 1;
+		display: block;
+	}
+
+	.hide {
+		height: 0;
+		opacity: 0;
+		display: none;
+	}
 }
