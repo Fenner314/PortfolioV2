@@ -119,9 +119,13 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 			return (
 				<div className='media pointer' onClick={handleClick}>
 					{data.media.playing ? (
-						<PauseButton className='play-button' width={48} />
+						<button>
+							<PauseButton className='play-button' width={48} />
+						</button>
 					) : (
-						<PlayButton className='play-button' width={48} />
+						<button>
+							<PlayButton className='play-button' width={48} />
+						</button>
 					)}
 				</div>
 			)
@@ -141,6 +145,11 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 		const seconds = Math.floor(secs % 60)
 		const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
 		return `${minutes}:${returnedSeconds}`
+	}
+
+	const handleSliderChange = (e: any) => {
+		setAudioTimeValue(e.target.value) // set time
+		if (audio) audio.currentTime = e.target.value // set audio time
 	}
 
 	return (
@@ -169,13 +178,18 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 				</div>
 				{/* vvvv custom audio player vvvv */}
 				<div
-					className={mediaType === 'audio' && audio && isActive ? 'show' : 'hide'}
+					className={
+						(mediaType === 'audio' && audio && isActive ? 'show' : 'hide') +
+						' controls'
+					}
 				>
 					<span>{calculateTime(audioTimeValue)}</span>
 					<input
 						type='range'
+						className='slider'
 						id={`slider-${index}`}
 						max={getRoundedDownTime(audio?.duration)}
+						onChange={(e) => handleSliderChange(e)}
 						value={audioTimeValue}
 					/>
 					<span>{duration}</span>
