@@ -7,7 +7,7 @@
 	}
 
 	&.music {
-		background-color: rgba(map-get($secondary, '400'), 0.1);
+		background-color: rgba(map-get($secondary, '200'), 0.1);
 		color: map-get($secondary, 'main');
 	}
 

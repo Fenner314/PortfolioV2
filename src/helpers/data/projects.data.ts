@@ -20,7 +20,7 @@ export const projectsData: ProjectData[] = [
 		dataType: 'project',
 		imageSrc: Tim,
 		title: 'Timtothy Anderson Trombone',
-		description: `Portfolio for professional trombonist, Timothy Anderson.`,
+		description: `Portfolio for Cincinnati based professional trombonist, Timothy Anderson.`,
 		type: 'software',
 		link: 'https://timothyandersontrombone.com',
 		index: 2.0,

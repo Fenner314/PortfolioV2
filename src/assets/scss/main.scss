@@ -5,6 +5,31 @@
 * {
 	margin: 0;
 	padding: 0;
+
+	&.software * {
+		&::selection {
+			background-color: map-get($primary, 'main');
+			color: map-get($background, 'main');
+		}
+	}
+	&.music * {
+		&::selection {
+			background-color: map-get($secondary, 'main');
+			color: map-get($background, 'main');
+		}
+	}
+	&.neither * {
+		&::selection {
+			background-color: map-get($tertiary, 'main');
+			color: map-get($background, 'main');
+		}
+	}
+	&.both * {
+		&::selection {
+			background-color: map-get($primary, 'main');
+			color: map-get($background, 'main');
+		}
+	}
 }
 
 h1 {
@@ -23,7 +48,8 @@ a {
 	color: inherit;
 }
 
-button {
+button,
+input {
 	all: unset;
 }
 

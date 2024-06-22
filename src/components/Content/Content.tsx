@@ -7,6 +7,7 @@ import Experience from 'components/Experience/Experience'
 import Education from 'components/Education/Education'
 import Projects from 'components/Projects/Projects'
 import Media from 'components/Media/Media'
+import Contact from 'components/Contact/Contact'
 
 interface ContentProps {}
 
@@ -45,7 +46,9 @@ const Content: FC<ContentProps> = () => {
 					<Media />
 				</Section>
 			)}
-			<div id='contact'>Contact</div>
+			<Section id='contact'>
+				<Contact />
+			</Section>
 		</div>
 	)
 }

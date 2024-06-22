@@ -21,14 +21,21 @@ function App() {
 		music: storageService.get(StorageKeys.Music) === false ? false : true,
 	})
 
+	const getControlValue = (): 'software' | 'music' | 'both' | 'neither' => {
+		if (controls.music && controls.software) return 'both'
+		if (!controls.music && !controls.software) return 'neither'
+		return controls.software ? 'software' : 'music'
+	}
+
 	const contextValue = {
 		controls,
 		setControls,
+		getControlValue,
 	}
 
 	return (
 		<Context.Provider value={contextValue}>
-			<div className='main'>
+			<div className={'main ' + getControlValue()}>
 				<div className='main-inner'>
 					<Header></Header>
 					<Content></Content>
