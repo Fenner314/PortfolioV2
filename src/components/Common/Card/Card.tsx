@@ -1,8 +1,7 @@
-import React, { FC, MutableRefObject, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import './Card.scss'
 import { ReactComponent as PlayButton } from 'assets/icons/circle-play-solid.svg'
 import { ReactComponent as PauseButton } from 'assets/icons/circle-pause-solid.svg'
-import { CardData } from 'models/card-data.interface'
 import Tech from '../../Tech/Tech'
 import { ReactComponent as Arrow } from 'assets/icons/arrow-up-right.svg'
 import { ExperienceData } from 'models/experience-data.interface'
@@ -34,6 +33,11 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 	const [imageSrc, setImageSrc] = useState<string>()
 	const [mediaType, setMediaType] = useState<'audio' | 'video'>()
 	const [mediaSrc, setMediaSrc] = useState<string>()
+
+	const [cardTitleWrapped, setCardTitleWrapped] = useState(false)
+
+	const titleRef = useRef<HTMLHeadingElement>(null)
+	const orgRef = useRef<HTMLHeadingElement>(null)
 
 	const index = data.index
 
@@ -67,6 +71,13 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 				}
 			}
 		}
+
+		setTimeout(() => {
+			isTitleWrapped()
+		})
+		window.addEventListener('resize', () => {
+			isTitleWrapped()
+		})
 	}, [])
 
 	useEffect(() => {
@@ -86,6 +97,15 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 			}
 		} else {
 			audio?.pause()
+		}
+	}
+
+	const isTitleWrapped = () => {
+		const titleEl = titleRef.current as HTMLHeadingElement
+		const orgEl = orgRef.current as HTMLHeadingElement
+
+		if (titleEl && orgEl) {
+			setCardTitleWrapped(titleEl.offsetTop !== orgEl.offsetTop)
 		}
 	}
 
@@ -159,14 +179,19 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 					{renderLeftSection()}
 					<div className='info-container'>
 						<div className={`title ${type}`}>
-							<h3>{title}</h3>
+							<h3 ref={titleRef}>{title}</h3>
 							{org && (
 								<>
-									<span className='circle'></span>
-									<h3>{org}</h3>
+									{<span className={`circle ${cardTitleWrapped && 'invisible'}`}></span>}
+									<h3 ref={orgRef}>
+										{org}{' '}
+										{link && (
+											<Arrow class={`link-arrow ${type}`} width={18} height={18} />
+										)}
+									</h3>
 								</>
 							)}
-							{link && <Arrow class='link-arrow' width={18} height={18} />}
+							{/* {link && <Arrow class='link-arrow' width={18} height={18} />} */}
 						</div>
 						<p>{description}</p>
 						<div className='tech-container'>
