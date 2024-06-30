@@ -9,7 +9,6 @@ const Media: FC<MediaProps> = () => {
 	const [media, setMedia] = useState(mediaData)
 
 	const toggleActiveMedia = (index: number) => {
-		console.log(index)
 		const newMedia = media.map((med, i) => {
 			if (i === index) {
 				med.media.active = true
@@ -27,12 +26,7 @@ const Media: FC<MediaProps> = () => {
 		return newMedia[index]
 	}
 
-	useEffect(() => {
-		console.log(media)
-	}, [media])
-
 	const renderMedia = () => {
-		console.log('rendermedia')
 		return media
 			.sort((a, b) => a.index - b.index)
 			.map((med, index) => {

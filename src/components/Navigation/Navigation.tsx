@@ -25,7 +25,6 @@ const Navigation: FC<NavigationProps> = () => {
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll, { passive: true })
 
-		setCurrentSectionsAsOffsets()
 		const hash = document.getElementById(location.hash.slice(1))
 		hash?.scrollIntoView()
 		document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth'
@@ -37,6 +36,11 @@ const Navigation: FC<NavigationProps> = () => {
 
 	useEffect(() => {
 		setOffsetsOrderedArray(
+			Object.values(offsets).sort((a: number, b: number) => a - b)
+		)
+		console.log('offsets: ', offsets)
+		console.log(
+			'offsets ordered: ',
 			Object.values(offsets).sort((a: number, b: number) => a - b)
 		)
 	}, [offsets])
@@ -57,10 +61,13 @@ const Navigation: FC<NavigationProps> = () => {
 				break
 			}
 		}
+		// console.log(scrollPosition)
 	}, [scrollPosition, offsetsOrderedArray])
 
 	useEffect(() => {
-		setCurrentSectionsAsOffsets()
+		setTimeout(() => {
+			setCurrentSectionsAsOffsets()
+		}, 30)
 	}, [controls])
 
 	const setCurrentSectionsAsOffsets = () => {
@@ -79,17 +86,21 @@ const Navigation: FC<NavigationProps> = () => {
 			[UrlOption.Media]: document.getElementById('media') as HTMLAnchorElement,
 			[UrlOption.Contact]: document.getElementById('contact') as HTMLAnchorElement,
 		}
+		console.log(offsetObj)
+		debugger
 
 		const unorderedOffsets: any = offsets
 		Object.keys(offsetObj).forEach((key: string) => {
 			const typedKey = key as Url
-			if (offsetObj[typedKey] && offsetObj[typedKey]?.getBoundingClientRect()) {
-				const offsetVal = offsetObj[typedKey]?.getBoundingClientRect()?.top ?? 0
-				unorderedOffsets[typedKey] = offsetVal + window.scrollY - 64
+			if (offsetObj[typedKey] && offsetObj[typedKey]?.offsetTop) {
+				const offsetVal = offsetObj[typedKey]?.offsetTop ?? 0
+				console.log(typedKey, ': ', offsetVal)
+				unorderedOffsets[typedKey] = offsetVal - 64
 			} else {
 				delete unorderedOffsets[typedKey]
 			}
 		})
+		console.log('unordered: ', unorderedOffsets)
 
 		const orderedOffsets = Object.keys(unorderedOffsets)
 			.sort((a: string, b: string) => unorderedOffsets[a] - unorderedOffsets[b])

@@ -63,7 +63,7 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 				const slider = document.getElementById(
 					'slider-' + index
 				) as HTMLInputElement
-				console.log('audio: ', audioPlayer.duration)
+
 				if (audioPlayer?.duration) {
 					const tempDuration = getRoundedDownTime(audioPlayer?.duration)
 					setDuration(calculateTime(tempDuration))
@@ -149,13 +149,13 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 					)}
 				</div>
 			)
+		} else {
+			return <div className='dates'></div>
 		}
 	}
 
 	const getRoundedDownTime = (time: number | undefined): number => {
-		if (!time) return 0
-
-		return Math.floor(time)
+		return time ? Math.floor(time) : 0
 	}
 
 	const calculateTime = (secs: number | undefined) => {
