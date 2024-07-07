@@ -33,9 +33,11 @@ const Content: FC<ContentProps> = () => {
 					<Education />
 				</Section>
 			)}
-			<Section id='experience'>
-				<Experience />
-			</Section>
+			{(controls.music || controls.software) && (
+				<Section id='experience'>
+					<Experience />
+				</Section>
+			)}
 			{controls.software && (
 				<Section id='projects'>
 					<Projects />

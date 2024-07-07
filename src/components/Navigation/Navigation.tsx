@@ -86,21 +86,17 @@ const Navigation: FC<NavigationProps> = () => {
 			[UrlOption.Media]: document.getElementById('media') as HTMLAnchorElement,
 			[UrlOption.Contact]: document.getElementById('contact') as HTMLAnchorElement,
 		}
-		console.log(offsetObj)
-		debugger
 
 		const unorderedOffsets: any = offsets
 		Object.keys(offsetObj).forEach((key: string) => {
 			const typedKey = key as Url
 			if (offsetObj[typedKey] && offsetObj[typedKey]?.offsetTop) {
 				const offsetVal = offsetObj[typedKey]?.offsetTop ?? 0
-				console.log(typedKey, ': ', offsetVal)
 				unorderedOffsets[typedKey] = offsetVal - 64
 			} else {
 				delete unorderedOffsets[typedKey]
 			}
 		})
-		console.log('unordered: ', unorderedOffsets)
 
 		const orderedOffsets = Object.keys(unorderedOffsets)
 			.sort((a: string, b: string) => unorderedOffsets[a] - unorderedOffsets[b])
@@ -125,12 +121,16 @@ const Navigation: FC<NavigationProps> = () => {
 					<a href='#education'>Education</a>
 				</div>
 			) : null}
-			<div
-				className={`nav-item ${activeUrl === UrlOption.Experience ? 'active' : ''}`}
-			>
-				<span className='nav-indicator'></span>
-				<a href='#experience'>Experience</a>
-			</div>
+			{(controls.music || controls.software) && (
+				<div
+					className={`nav-item ${
+						activeUrl === UrlOption.Experience ? 'active' : ''
+					}`}
+				>
+					<span className='nav-indicator'></span>
+					<a href='#experience'>Experience</a>
+				</div>
+			)}
 			{controls.software ? (
 				<div
 					className={`nav-item ${activeUrl === UrlOption.Projects ? 'active' : ''}`}

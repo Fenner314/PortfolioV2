@@ -1,6 +1,4 @@
-import Emphasis from 'components/Common/Emphasis/Emphasis'
 import TextBlock from 'components/Common/TextBlock/TextBlock'
-import React from 'react'
 
 export default function MusicAbout() {
 	return (

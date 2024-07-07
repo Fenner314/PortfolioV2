@@ -7,6 +7,23 @@
 
 	&:hover {
 		text-decoration: underline;
-		color: map-get($primary, 'main');
+		cursor: default;
+
+		a {
+			cursor: pointer;
+		}
+
+		&.both,
+		&.software {
+			color: map-get($primary, 'main');
+		}
+
+		&.music {
+			color: map-get($secondary, 'main');
+		}
+
+		&.neither {
+			color: map-get($tertiary, 'main');
+		}
 	}
 }

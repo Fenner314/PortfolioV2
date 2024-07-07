@@ -1,6 +1,7 @@
 import 'assets/scss/main.scss'
 import Content from 'components/Content/Content'
 import Header from 'components/Header/Header'
+import { getControlValue } from 'helpers/functions/get-control-value.helper'
 import { Controls } from 'models/controls.interface'
 import { StorageKeys } from 'models/storage-keys.enum'
 import React, { FC, useState } from 'react'
@@ -21,21 +22,14 @@ function App() {
 		music: storageService.get(StorageKeys.Music) === false ? false : true,
 	})
 
-	const getControlValue = (): 'software' | 'music' | 'both' | 'neither' => {
-		if (controls.music && controls.software) return 'both'
-		if (!controls.music && !controls.software) return 'neither'
-		return controls.software ? 'software' : 'music'
-	}
-
 	const contextValue = {
 		controls,
 		setControls,
-		getControlValue,
 	}
 
 	return (
 		<Context.Provider value={contextValue}>
-			<div className={'main ' + getControlValue()}>
+			<div className={'main ' + getControlValue(controls)}>
 				<div className='main-inner'>
 					<Header></Header>
 					<Content></Content>

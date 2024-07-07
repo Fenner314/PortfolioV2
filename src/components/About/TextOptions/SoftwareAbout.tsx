@@ -1,6 +1,5 @@
 import Emphasis from 'components/Common/Emphasis/Emphasis'
 import TextBlock from 'components/Common/TextBlock/TextBlock'
-import React from 'react'
 
 export default function SoftwareAbout() {
 	return (
@@ -11,25 +10,31 @@ export default function SoftwareAbout() {
 				taking any freelance work I could get, which consisted mainly of working on
 				projects for peers and friends, until I got the opportunity to work as part
 				of a team of 3 on a{' '}
-				<a
-					href='https://siouxfalls.business/entrepreneur-strives-to-cut-time-spent-waiting-for-table/'
-					target='_blank'
-					rel='noreferrer'
-				>
-					<Emphasis>start up company</Emphasis>
-				</a>
+				<Emphasis>
+					<a
+						href='https://siouxfalls.business/entrepreneur-strives-to-cut-time-spent-waiting-for-table/'
+						target='_blank'
+						rel='noreferrer'
+					>
+						start up company
+					</a>
+				</Emphasis>
 				. Later, I would go on to work for an{' '}
-				<a
-					href='https://sevenhillstechnology.com/'
-					target='_blank'
-					rel='noreferrer'
-				>
-					<Emphasis>established consulting company</Emphasis>
-				</a>{' '}
+				<Emphasis>
+					<a
+						href='https://sevenhillstechnology.com/'
+						target='_blank'
+						rel='noreferrer'
+					>
+						established consulting company
+					</a>
+				</Emphasis>{' '}
 				where the client I worked most closely with was a{' '}
-				<a href='https://www.sentrilock.com/' target='_blank' rel='noreferrer'>
-					<Emphasis>large real-estate corporation</Emphasis>
-				</a>
+				<Emphasis>
+					<a href='https://www.sentrilock.com/' target='_blank' rel='noreferrer'>
+						large real-estate corporation{' '}
+					</a>
+				</Emphasis>
 				.{' '}
 			</TextBlock>
 			<TextBlock>

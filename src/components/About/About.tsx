@@ -4,6 +4,7 @@ import SoftwareAbout from './TextOptions/SoftwareAbout'
 import MusicAbout from './TextOptions/MusicAbout'
 import SoftwareMusicAbout from './TextOptions/SoftwareMusicAbout'
 import { Context } from 'App'
+import SelfAbout from './TextOptions/SelfAbout'
 
 interface AboutProps {}
 
@@ -17,6 +18,7 @@ const About: FC<AboutProps> = () => {
 		} else if (controls.music) {
 			return <MusicAbout />
 		} else {
+			return <SelfAbout />
 		}
 	}
 
