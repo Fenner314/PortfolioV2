@@ -113,14 +113,14 @@ const Navigation: FC<NavigationProps> = () => {
 				<span className='nav-indicator'></span>
 				<a href='#about'>About</a>
 			</div>
-			{controls.music ? (
+			{(controls.software || controls.music) && (
 				<div
 					className={`nav-item ${activeUrl === UrlOption.Education ? 'active' : ''}`}
 				>
 					<span className='nav-indicator'></span>
 					<a href='#education'>Education</a>
 				</div>
-			) : null}
+			)}
 			{(controls.music || controls.software) && (
 				<div
 					className={`nav-item ${
@@ -131,22 +131,22 @@ const Navigation: FC<NavigationProps> = () => {
 					<a href='#experience'>Experience</a>
 				</div>
 			)}
-			{controls.software ? (
+			{controls.software && (
 				<div
 					className={`nav-item ${activeUrl === UrlOption.Projects ? 'active' : ''}`}
 				>
 					<span className='nav-indicator'></span>
 					<a href='#projects'>Projects</a>
 				</div>
-			) : null}
-			{controls.music ? (
+			)}
+			{controls.music && (
 				<div
 					className={`nav-item ${activeUrl === UrlOption.Media ? 'active' : ''}`}
 				>
 					<span className='nav-indicator'></span>
 					<a href='#media'>Media</a>
 				</div>
-			) : null}
+			)}
 			<div
 				className={`nav-item ${activeUrl === UrlOption.Contact ? 'active' : ''}`}
 			>

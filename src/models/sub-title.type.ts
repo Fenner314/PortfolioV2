@@ -3,3 +3,6 @@ export type SubTitle =
 	| 'Consultant'
 	| 'Trombonist'
 	| 'Educator'
+	| 'Husband'
+	| 'Dog Dad'
+	| 'Gamer'

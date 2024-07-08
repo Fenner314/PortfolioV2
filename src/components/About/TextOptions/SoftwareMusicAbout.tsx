@@ -10,9 +10,9 @@ export default function SoftwareMusicAbout() {
 				class, I started introducing myself to coding and moved forward with the
 				intention of incorporating that in an entrepreneurial role in my music
 				career. As I became further immersed in the world of development, I became
-				more passionate about it. That fact coupled with impact COVID-19 had on the
-				arts led to me shifting my focus from music to software development, and I
-				haven’t looked back since.
+				more passionate about it. That fact coupled with the impact COVID-19 had on
+				the arts led to me shifting my focus from music to software development, and
+				I haven’t looked back since.
 			</TextBlock>
 			<TextBlock>
 				Staying involved in the world of music is still important to me; I love

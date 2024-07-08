@@ -21,9 +21,14 @@ interface HeaderProps {}
 
 const storageService = new StorageService()
 
-const subTitleValues: { software: SubTitle[]; music: SubTitle[] } = {
+const subTitleValues: {
+	software: SubTitle[]
+	music: SubTitle[]
+	neither: SubTitle[]
+} = {
 	software: ['Software Developer', 'Consultant'],
 	music: ['Trombonist', 'Educator'],
+	neither: ['Husband', 'Dog Dad', 'Gamer'],
 }
 
 const tags = {
@@ -53,16 +58,39 @@ const Header: FC<HeaderProps> = () => {
 				subTitlesTemp = subTitlesTemp.concat(subTitleValues[typedControl])
 			}
 		})
+		if (!subTitlesTemp?.length) {
+			subTitlesTemp = subTitleValues.neither
+		}
 		const subTitlesElements: ReactNode[] = []
+		const subTitlesContainerElementWidth: number =
+			document.querySelector('.sub-titles')?.clientWidth ?? 0
+		let subTitleWidths: number[] = []
+
 		subTitlesTemp.forEach((text: SubTitle, index: number) => {
 			subTitlesElements.push(<h3 className='sub-title'>{text}</h3>)
+			const tempElement = document.createElement('h3')
+			tempElement.className = 'sub-title'
+			tempElement.innerHTML = text
+			document.querySelector('.sub-titles')?.appendChild(tempElement)
+			const bounds = tempElement.getBoundingClientRect()
+			document.querySelector('.sub-titles')?.removeChild(tempElement)
+			const currentSubtitleWidth = bounds.width
+			subTitleWidths.push(currentSubtitleWidth)
 
-			if (index + 1 < subTitlesTemp?.length) {
-				if (index % 2 == 0) {
-					subTitlesElements.push(<span className='divider'> | </span>)
-				} else {
-					subTitlesElements.push(<br />)
-				}
+			const totalWidth =
+				subTitleWidths.reduce((accumulator, current) => accumulator + current, 0) +
+				20.45 /** width of divider with margin */ *
+					Math.floor(subTitleWidths?.length / 2)
+
+			if (totalWidth > subTitlesContainerElementWidth) {
+				subTitlesElements.splice(
+					index /** inserts right before most recent element */,
+					1 /** removes previous divider */,
+					<br />
+				)
+				subTitleWidths = []
+			} else if (index !== subTitlesTemp?.length - 1) {
+				subTitlesElements.push(<span className='divider'> | </span>)
 			}
 		})
 

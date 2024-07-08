@@ -105,7 +105,10 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 		const orgEl = orgRef.current as HTMLHeadingElement
 
 		if (titleEl && orgEl) {
-			setCardTitleWrapped(titleEl.offsetTop !== orgEl.offsetTop)
+			setCardTitleWrapped(
+				titleEl.offsetTop <= orgEl.offsetTop - 4 ||
+					titleEl.offsetTop >= orgEl.offsetTop + 4
+			)
 		}
 	}
 
@@ -117,16 +120,19 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 	const renderLeftSection = () => {
 		if (
 			(isExperienceData(data) || isEducationData(data)) &&
-			startYear &&
-			endYear
+			(startYear || endYear)
 		) {
 			return (
 				<div className='dates'>
 					<span>{startYear}</span>
-					<span>&nbsp;-&nbsp;</span>
-					<span>
-						{typeof endYear === 'number' ? endYear : endYear?.toUpperCase()}
-					</span>
+					{endYear && (
+						<>
+							<span>&nbsp;-&nbsp;</span>
+							<span>
+								{typeof endYear === 'number' ? endYear : endYear?.toUpperCase()}
+							</span>
+						</>
+					)}
 				</div>
 			)
 		} else if (isProjectData(data) && imageSrc) {
