@@ -89,5 +89,11 @@
 		&:hover {
 			fill: map-get($text, '300');
 		}
+
+		&.sht:hover {
+			path {
+				fill: #fff;
+			}
+		}
 	}
 }

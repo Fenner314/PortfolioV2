@@ -37,7 +37,7 @@ const tags = {
 	music:
 		'I promote positive interactions with music  through well-rehearsed performance and thoughtful teaching. ',
 	both:
-		'I help businesses grow by using my musical background to bring unique perspectives when working on teams and while building engaging and inspiring digital products.',
+		'I help businesses grow by using my musical background to bring unique perspectives while building engaging and inspiring digital products.',
 }
 
 const Header: FC<HeaderProps> = () => {
@@ -149,7 +149,7 @@ const Header: FC<HeaderProps> = () => {
 					<Github class='link-icon' width={24} alt='Github icon' />
 					<LinkedIn class='link-icon' width={24} alt='LinkedIn icon' />
 					<SHT
-						class='link-icon'
+						class='link-icon sht'
 						width={24}
 						height={24}
 						alt='Seven Hills Technology icon'

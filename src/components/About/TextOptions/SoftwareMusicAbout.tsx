@@ -4,15 +4,15 @@ export default function SoftwareMusicAbout() {
 	return (
 		<div className='about-text'>
 			<TextBlock>
-				I lived the first 24 years of my life focusing on developing a career in
-				music, specifically in trombone as a performer and teacher. After taking an
-				entrepreneurship class while working towards my masters degree. From that
-				class, I started introducing myself to coding and moved forward with the
-				intention of incorporating that in an entrepreneurial role in my music
-				career. As I became further immersed in the world of development, I became
-				more passionate about it. That fact coupled with the impact COVID-19 had on
-				the arts led to me shifting my focus from music to software development, and
-				I haven’t looked back since.
+				I lived most of my life focusing on developing a career in music,
+				specifically in trombone as a performer and educator. After taking an
+				entrepreneurship class while working towards my masters degree, I started
+				introducing myself to coding and moved forward with the intention of
+				incorporating that in an entrepreneurial role in my music career. As I
+				became further immersed in the world of development, I became more
+				passionate about it. That fact coupled with the impact COVID-19 had on the
+				arts led to me shifting my focus from music to software development, and I
+				haven’t looked back since.
 			</TextBlock>
 			<TextBlock>
 				Staying involved in the world of music is still important to me; I love

@@ -29,15 +29,20 @@
 		}
 
 		.link-arrow {
-			top: 0px !important;
-			right: 0px !important;
-
 			&.music {
 				stroke: map-get($secondary, 'main');
 			}
 			&.software {
 				stroke: map-get($primary, 'main');
 			}
+		}
+	}
+
+	.card-link:hover,
+	.card-link:focus {
+		.link-arrow {
+			top: 0px !important;
+			right: 0px !important;
 		}
 	}
 

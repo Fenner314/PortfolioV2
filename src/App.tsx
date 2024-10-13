@@ -4,7 +4,7 @@ import Header from 'components/Header/Header'
 import { getControlValue } from 'helpers/functions/get-control-value.helper'
 import { Controls } from 'models/controls.interface'
 import { StorageKeys } from 'models/storage-keys.enum'
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { StorageService } from 'services/storage.service'
 
 export interface ContextProps {

@@ -179,54 +179,57 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 	}
 
 	return (
-		<div className={`Card ${link && 'pointer'}`}>
-			<a href={link} target='_blank' rel='noreferrer'>
-				<div className='grid'>
-					{renderLeftSection()}
-					<div className='info-container'>
-						<div className={`title ${type}`}>
-							<h3 ref={titleRef}>{title}</h3>
-							{org && (
-								<>
-									{<span className={`circle ${cardTitleWrapped && 'invisible'}`}></span>}
-									<h3 ref={orgRef}>
-										{org}{' '}
-										{link && (
-											<Arrow class={`link-arrow ${type}`} width={18} height={18} />
-										)}
-									</h3>
-								</>
-							)}
-							{/* {link && <Arrow class='link-arrow' width={18} height={18} />} */}
-						</div>
-						<p>{description}</p>
-						<div className='tech-container'>
-							{technical?.map((tech) => (
-								<Tech text={tech} type={type} />
-							))}
-						</div>
+		<div className={`Card`}>
+			<div className='grid'>
+				{renderLeftSection()}
+				<div className='info-container'>
+					<a
+						href={link}
+						target='_blank'
+						rel='noreferrer'
+						className={`title card-link ${type} ${link && 'pointer'}`}
+					>
+						<h3 ref={titleRef}>{title}</h3>
+						{org !== undefined && (
+							<>
+								{org && (
+									<span className={`circle ${cardTitleWrapped && 'invisible'}`}></span>
+								)}
+								<h3 ref={orgRef}>
+									{org}{' '}
+									{link && <Arrow class={`link-arrow ${type}`} width={18} height={18} />}
+								</h3>
+							</>
+						)}
+						{/* {link && <Arrow class='link-arrow' width={18} height={18} />} */}
+					</a>
+					<p>{description}</p>
+					<div className='tech-container'>
+						{technical?.map((tech) => (
+							<Tech text={tech} type={type} />
+						))}
 					</div>
 				</div>
-				{/* vvvv custom audio player vvvv */}
-				<div
-					className={
-						(mediaType === 'audio' && audio && isActive ? 'show' : 'hide') +
-						' controls'
-					}
-				>
-					<span>{calculateTime(audioTimeValue)}</span>
-					<input
-						type='range'
-						className='slider'
-						id={`slider-${index}`}
-						max={getRoundedDownTime(audio?.duration)}
-						onChange={(e) => handleSliderChange(e)}
-						value={audioTimeValue}
-					/>
-					<span>{duration}</span>
-				</div>
-				{/* ^^^^ custom audio player ^^^^ */}
-			</a>
+			</div>
+			{/* vvvv custom audio player vvvv */}
+			<div
+				className={
+					(mediaType === 'audio' && audio && isActive ? 'show' : 'hide') +
+					' controls'
+				}
+			>
+				<span>{calculateTime(audioTimeValue)}</span>
+				<input
+					type='range'
+					className='slider'
+					id={`slider-${index}`}
+					max={getRoundedDownTime(audio?.duration)}
+					onChange={(e) => handleSliderChange(e)}
+					value={audioTimeValue}
+				/>
+				<span>{duration}</span>
+			</div>
+			{/* ^^^^ custom audio player ^^^^ */}
 		</div>
 	)
 }

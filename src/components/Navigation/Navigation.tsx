@@ -23,24 +23,24 @@ const Navigation: FC<NavigationProps> = () => {
 	}
 
 	useEffect(() => {
-		window.addEventListener('scroll', handleScroll, { passive: true })
+		if (offsetsOrderedArray?.length) {
+			window.addEventListener('scroll', handleScroll, { passive: true })
 
-		const hash = document.getElementById(location.hash.slice(1))
-		hash?.scrollIntoView()
-		document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth'
+			const elementId = location.hash.slice(1) as keyof Offsets
+			window.scrollTo({
+				top: offsets[elementId],
+				behavior: 'smooth',
+			})
+			document.getElementsByTagName('html')[0].style.scrollBehavior = 'smooth'
 
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
+			return () => {
+				window.removeEventListener('scroll', handleScroll)
+			}
 		}
-	}, [])
+	}, [offsetsOrderedArray])
 
 	useEffect(() => {
 		setOffsetsOrderedArray(
-			Object.values(offsets).sort((a: number, b: number) => a - b)
-		)
-		console.log('offsets: ', offsets)
-		console.log(
-			'offsets ordered: ',
 			Object.values(offsets).sort((a: number, b: number) => a - b)
 		)
 	}, [offsets])
@@ -61,7 +61,6 @@ const Navigation: FC<NavigationProps> = () => {
 				break
 			}
 		}
-		// console.log(scrollPosition)
 	}, [scrollPosition, offsetsOrderedArray])
 
 	useEffect(() => {
@@ -71,7 +70,6 @@ const Navigation: FC<NavigationProps> = () => {
 	}, [controls])
 
 	const setCurrentSectionsAsOffsets = () => {
-		console.log('setCurrentSectionsAsOffsets called')
 		const offsetObj: Offsets<HTMLAnchorElement> = {
 			[UrlOption.About]: document.getElementById('about') as HTMLAnchorElement,
 			[UrlOption.Education]: document.getElementById(

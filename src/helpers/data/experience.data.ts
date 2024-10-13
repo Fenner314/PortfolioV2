@@ -42,7 +42,7 @@ export const softwareExperience: ExperienceData[] = [
       positive relationships with clients and internal team. Collaborate with internal 
       team on all client projects, obtain Azure certifications, and continuously work on 
       professional development.`,
-		technical: [],
+		technical: ['C#', '.NET', 'Azure'],
 		type: 'software',
 		index: 2.0,
 		link: 'https://sevenhillstechnology.com/',

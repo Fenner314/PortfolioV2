@@ -9,5 +9,7 @@ export const certificationData: EducationData[] = [
 		description:
 			'Knowledgable in cloud concepts, core Azure services, and how to use Azure management governance features and tools.',
 		startYear: 2024,
+		link: '/files/AzureFundamentalsCertification_AZ-900.pdf',
+		org: '',
 	},
 ]
