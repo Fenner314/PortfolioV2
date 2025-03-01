@@ -34,15 +34,23 @@ export const softwareExperience: ExperienceData[] = [
 		dataType: 'experience',
 		startYear: 2021,
 		endYear: 'present',
-		title: 'Software Developer II',
+		title: 'Account Lead',
 		org: 'Seven Hills Technology',
 		description: `Improve clients’ businesses by building creative, impactful technology, 
       learn the ins and outs of their domain in order to effectively coach 
       them on best practices and how to provide the best possible product, and maintain 
-      positive relationships with clients and internal team. Collaborate with internal 
-      team on all client projects, obtain Azure certifications, and continuously work on 
-      professional development.`,
-		technical: ['C#', '.NET', 'Azure'],
+      positive relationships with clients while managing an internal team. Collaborate with 
+			colleagues on all company projects, and continuously work on professional development.`,
+		technical: [
+			'C#',
+			'.NET',
+			'Azure',
+			'Python',
+			'Django',
+			'React Native',
+			'Postgres',
+			'Typer',
+		],
 		type: 'software',
 		index: 2.0,
 		link: 'https://sevenhillstechnology.com/',

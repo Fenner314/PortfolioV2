@@ -137,7 +137,7 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 			)
 		} else if (isProjectData(data) && imageSrc) {
 			return (
-				<div>
+				<div className='project-image-ctr'>
 					<img className='image' src={imageSrc} alt={title} />
 				</div>
 			)
@@ -180,7 +180,11 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 
 	return (
 		<div className={`Card`}>
-			<div className='grid'>
+			<div
+				className={`grid ${data.dataType === 'project' && 'project'} ${
+					data.dataType === 'media' && 'media-grid'
+				}`}
+			>
 				{renderLeftSection()}
 				<div className='info-container'>
 					<a
