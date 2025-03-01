@@ -1,5 +1,6 @@
 export type Url =
 	| 'about'
+	| 'fun-facts'
 	| 'experience'
 	| 'projects'
 	| 'education'
@@ -8,6 +9,7 @@ export type Url =
 
 export enum UrlOption {
 	About = 'about',
+	FunFacts = 'fun-facts',
 	Experience = 'experience',
 	Projects = 'projects',
 	Education = 'education',

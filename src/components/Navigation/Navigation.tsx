@@ -72,6 +72,9 @@ const Navigation: FC<NavigationProps> = () => {
 	const setCurrentSectionsAsOffsets = () => {
 		const offsetObj: Offsets<HTMLAnchorElement> = {
 			[UrlOption.About]: document.getElementById('about') as HTMLAnchorElement,
+			[UrlOption.FunFacts]: document.getElementById(
+				'fun-facts'
+			) as HTMLAnchorElement,
 			[UrlOption.Education]: document.getElementById(
 				'education'
 			) as HTMLAnchorElement,
@@ -111,6 +114,14 @@ const Navigation: FC<NavigationProps> = () => {
 				<span className='nav-indicator'></span>
 				<a href='#about'>About</a>
 			</div>
+			{!controls.software && !controls.music && (
+				<div
+					className={`nav-item ${activeUrl === UrlOption.FunFacts ? 'active' : ''}`}
+				>
+					<span className='nav-indicator'></span>
+					<a href='#fun-facts'>Fun Facts</a>
+				</div>
+			)}
 			{(controls.software || controls.music) && (
 				<div
 					className={`nav-item ${activeUrl === UrlOption.Education ? 'active' : ''}`}

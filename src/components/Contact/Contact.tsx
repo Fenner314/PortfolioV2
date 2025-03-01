@@ -68,7 +68,7 @@ const Contact: FC<ContactProps> = () => {
 		} else {
 			setSubject((prev) => ({
 				...prev,
-				value: "I just think you're great",
+				value: "I'd like to connect",
 			}))
 		}
 	}, [controls])

@@ -201,7 +201,6 @@ const Card: FC<CardProps> = ({ data, onClick, isPlaying, isActive }) => {
 								</h3>
 							</>
 						)}
-						{/* {link && <Arrow class='link-arrow' width={18} height={18} />} */}
 					</a>
 					<p>{description}</p>
 					<div className='tech-container'>
