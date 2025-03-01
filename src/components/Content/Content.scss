@@ -1,4 +1,8 @@
 .Content {
 	width: 50%;
 	display: flex;
+
+	&.mobile {
+		width: 100%;
+	}
 }

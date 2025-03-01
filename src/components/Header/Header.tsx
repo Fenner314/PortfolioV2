@@ -41,7 +41,7 @@ const tags = {
 }
 
 const Header: FC<HeaderProps> = () => {
-	const { controls, setControls } = useContext(Context)
+	const { controls, setControls, isMobile } = useContext(Context)
 	const [subTitles, setSubTitles] = useState<ReactNode[]>([])
 
 	const handleControlToggle = (control: Control, checked: boolean) => {
@@ -113,7 +113,7 @@ const Header: FC<HeaderProps> = () => {
 	}, [controls, calculateSubTitles])
 
 	return (
-		<div className='Header'>
+		<div className={`Header ${isMobile && 'mobile'}`}>
 			<div className='inner'>
 				<div className='content'>
 					<div className='controls'>
@@ -143,7 +143,7 @@ const Header: FC<HeaderProps> = () => {
 						<div className='sub-titles'>{subTitles.map((title) => title)}</div>
 						<p className='tag'>{renderTag()}</p>
 					</div>
-					<Navigation></Navigation>
+					{!isMobile && <Navigation></Navigation>}
 				</div>
 				<div className='footer'>
 					<Github class='link-icon' width={24} alt='Github icon' />

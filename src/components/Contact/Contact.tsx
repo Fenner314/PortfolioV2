@@ -2,11 +2,12 @@ import React, { FC, useContext, useEffect, useState } from 'react'
 import './Contact.scss'
 import { Context } from 'App'
 import emailRegexExample from 'helpers/constants/emailRegexExample'
+import MobileNavItem from 'components/Navigation/MobileNavItem'
 
 interface ContactProps {}
 
 const Contact: FC<ContactProps> = () => {
-	const { controls } = useContext(Context)
+	const { controls, isMobile } = useContext(Context)
 
 	const [name, setName] = useState({
 		value: '',
@@ -222,6 +223,7 @@ const Contact: FC<ContactProps> = () => {
 
 	return (
 		<div className='Contact'>
+			{isMobile && <MobileNavItem id='contact' label='Contact' />}
 			<p className='mb-8'>
 				I'd love to hear from you! Just fill out the form below and I will respond
 				as soon as I am able.

@@ -5,11 +5,12 @@ import MusicAbout from './TextOptions/MusicAbout'
 import SoftwareMusicAbout from './TextOptions/SoftwareMusicAbout'
 import { Context } from 'App'
 import SelfAbout from './TextOptions/SelfAbout'
+import MobileNavItem from 'components/Navigation/MobileNavItem'
 
 interface AboutProps {}
 
 const About: FC<AboutProps> = () => {
-	const { controls } = useContext(Context)
+	const { controls, isMobile } = useContext(Context)
 	const renderAboutSection = () => {
 		if (controls.music && controls.software) {
 			return <SoftwareMusicAbout />
@@ -22,7 +23,12 @@ const About: FC<AboutProps> = () => {
 		}
 	}
 
-	return <div className='About'>{renderAboutSection()}</div>
+	return (
+		<div className='About'>
+			{isMobile && <MobileNavItem id='about' label='About' />}
+			{renderAboutSection()}
+		</div>
+	)
 }
 
 export default About

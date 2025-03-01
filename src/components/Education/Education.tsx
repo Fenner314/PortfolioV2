@@ -5,11 +5,12 @@ import Card from 'components/Common/Card/Card'
 import { Context } from 'App'
 import { EducationData } from 'models/education-data.interface'
 import { certificationData } from 'helpers/data/certifications.data'
+import MobileNavItem from 'components/Navigation/MobileNavItem'
 
 interface EducationProps {}
 
 const Education: FC<EducationProps> = () => {
-	const { controls } = useContext(Context)
+	const { controls, isMobile } = useContext(Context)
 
 	const [data, setData] = useState<EducationData[]>([])
 
@@ -30,7 +31,12 @@ const Education: FC<EducationProps> = () => {
 		return testData
 	}
 
-	return <div className='Experience'>{renderEducation()}</div>
+	return (
+		<div className='Experience'>
+			{isMobile && <MobileNavItem id='fun-facts' label='Fun Facts' />}
+			{renderEducation()}
+		</div>
+	)
 }
 
 export default Education

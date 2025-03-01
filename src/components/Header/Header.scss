@@ -8,6 +8,13 @@
 	height: 100%;
 	padding-top: 4rem;
 	padding-bottom: 6rem;
+
+	&.mobile {
+		position: relative;
+		width: 100%;
+		padding-top: 2rem;
+		padding-bottom: 0;
+	}
 }
 
 .inner {
@@ -80,6 +87,7 @@
 
 .footer {
 	display: flex;
+	margin-top: 4rem;
 	gap: 1.25rem;
 	.link-icon {
 		fill: map-get($text, 'main');

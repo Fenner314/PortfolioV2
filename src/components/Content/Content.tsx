@@ -13,11 +13,11 @@ import FunFacts from 'components/FunFacts/FunFacts'
 interface ContentProps {}
 
 const Content: FC<ContentProps> = () => {
-	const { controls } = useContext(Context)
+	const { controls, isMobile } = useContext(Context)
 
 	return (
 		<div
-			className='Content'
+			className={`Content ${isMobile && 'mobile'}`}
 			style={{
 				display: 'flex',
 				flexDirection: 'column',

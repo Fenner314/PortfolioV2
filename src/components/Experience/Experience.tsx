@@ -8,11 +8,12 @@ import {
 } from 'helpers/data/experience.data'
 import Card from 'components/Common/Card/Card'
 import { CardData } from 'models/card-data.interface'
+import MobileNavItem from 'components/Navigation/MobileNavItem'
 
 interface ExperienceProps {}
 
 const Experience: FC<ExperienceProps> = () => {
-	const { controls } = useContext(Context)
+	const { controls, isMobile } = useContext(Context)
 	const [experienceData, setExperienceData] = useState<CardData[]>([])
 
 	const calculateExperience = useCallback(() => {
@@ -33,7 +34,12 @@ const Experience: FC<ExperienceProps> = () => {
 			<Card key={index} data={experience} />
 		))
 
-	return <div className='Experience'>{renderExperience()}</div>
+	return (
+		<div className='Experience'>
+			{isMobile && <MobileNavItem id='experience' label='Experience' />}
+			{renderExperience()}
+		</div>
+	)
 }
 
 export default Experience

@@ -1,8 +1,14 @@
+import { Context } from 'App'
 import TextBlock from 'components/Common/TextBlock/TextBlock'
+import MobileNavItem from 'components/Navigation/MobileNavItem'
+import { useContext } from 'react'
 
 export default function FunFacts() {
+	const { isMobile } = useContext(Context)
+
 	return (
 		<div className='fun-facts-text'>
+			{isMobile && <MobileNavItem id='fun-facts' label='Fun Facts' />}
 			<ul>
 				<li>
 					<TextBlock>I can solve a rubiks cube in around one minute</TextBlock>

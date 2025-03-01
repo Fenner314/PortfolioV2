@@ -64,6 +64,10 @@ input {
 	justify-content: center;
 
 	height: max-content;
+
+	@media only screen and (max-width: 512px) {
+		padding: 0 1rem;
+	}
 }
 
 .main-inner {
@@ -74,4 +78,8 @@ input {
 
 	display: flex;
 	gap: 1rem;
+
+	&.mobile {
+		flex-direction: column;
+	}
 }

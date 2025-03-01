@@ -1,11 +1,14 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import './Media.scss'
 import { mediaData } from 'helpers/data/media.data'
 import Card from 'components/Common/Card/Card'
+import { Context } from 'App'
+import MobileNavItem from 'components/Navigation/MobileNavItem'
 
 interface MediaProps {}
 
 const Media: FC<MediaProps> = () => {
+	const { isMobile } = useContext(Context)
 	const [media, setMedia] = useState(mediaData)
 
 	const toggleActiveMedia = (index: number) => {
@@ -41,7 +44,12 @@ const Media: FC<MediaProps> = () => {
 				)
 			})
 	}
-	return <div className='Media'>{renderMedia()}</div>
+	return (
+		<div className='Media'>
+			{isMobile && <MobileNavItem id='media' label='Media' />}
+			{renderMedia()}
+		</div>
+	)
 }
 
 export default Media
