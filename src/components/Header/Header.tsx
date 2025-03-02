@@ -38,6 +38,8 @@ const tags = {
 		'I promote positive interactions with music through well-rehearsed performance and thoughtful teaching. ',
 	both:
 		'I leverage my musical background to provide unique insights, helping businesses achieve their goals by creating engaging and inspiring digital products.',
+	neither:
+		'I seek opportunities to find fulfillment, take on responsibility, and help others.',
 }
 
 const Header: FC<HeaderProps> = () => {
@@ -116,6 +118,10 @@ const Header: FC<HeaderProps> = () => {
 			return tags.software
 		} else if (controls.music) {
 			return tags.music
+		} else {
+			console.log('hi')
+			console.log(tags.neither)
+			return tags.neither
 		}
 	}
 
@@ -158,7 +164,7 @@ const Header: FC<HeaderProps> = () => {
 					</div>
 					{!isMobile && <Navigation></Navigation>}
 				</div>
-				<div className='footer'>
+				<div className={`footer ${isMobile && 'mobile'}`}>
 					<Github class='link-icon' width={24} alt='Github icon' />
 					<LinkedIn class='link-icon' width={24} alt='LinkedIn icon' />
 					<SHT
