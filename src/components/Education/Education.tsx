@@ -33,7 +33,7 @@ const Education: FC<EducationProps> = () => {
 
 	return (
 		<div className='Experience'>
-			{isMobile && <MobileNavItem id='fun-facts' label='Fun Facts' />}
+			{isMobile && <MobileNavItem id='education' label='Education' />}
 			{renderEducation()}
 		</div>
 	)

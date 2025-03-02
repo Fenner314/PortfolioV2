@@ -105,3 +105,20 @@
 		}
 	}
 }
+
+.sub-titles {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	justify-content: flex-start;
+	width: 100%;
+	max-width: 25rem;
+}
+
+.sub-title {
+	white-space: nowrap;
+}
+
+.divider {
+	margin: 0 5px;
+}

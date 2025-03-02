@@ -33,11 +33,11 @@ const subTitleValues: {
 
 const tags = {
 	software:
-		'I help businesses grow by building engaging and inspiring digital products.',
+		'I work with businesses to achieve their goals by building engaging and inspiring digital products.',
 	music:
-		'I promote positive interactions with music  through well-rehearsed performance and thoughtful teaching. ',
+		'I promote positive interactions with music through well-rehearsed performance and thoughtful teaching. ',
 	both:
-		'I help businesses grow by using my musical background to bring unique perspectives while building engaging and inspiring digital products.',
+		'I leverage my musical background to provide unique insights, helping businesses achieve their goals by creating engaging and inspiring digital products.',
 }
 
 const Header: FC<HeaderProps> = () => {
@@ -58,45 +58,56 @@ const Header: FC<HeaderProps> = () => {
 				subTitlesTemp = subTitlesTemp.concat(subTitleValues[typedControl])
 			}
 		})
+
 		if (!subTitlesTemp?.length) {
 			subTitlesTemp = subTitleValues.neither
 		}
+
 		const subTitlesElements: ReactNode[] = []
-		const subTitlesContainerElementWidth: number =
-			document.querySelector('.sub-titles')?.clientWidth ?? 0
-		let subTitleWidths: number[] = []
 
 		subTitlesTemp.forEach((text: SubTitle, index: number) => {
-			subTitlesElements.push(<h3 className='sub-title'>{text}</h3>)
-			const tempElement = document.createElement('h3')
-			tempElement.className = 'sub-title'
-			tempElement.innerHTML = text
-			document.querySelector('.sub-titles')?.appendChild(tempElement)
-			const bounds = tempElement.getBoundingClientRect()
-			document.querySelector('.sub-titles')?.removeChild(tempElement)
-			const currentSubtitleWidth = bounds.width
-			subTitleWidths.push(currentSubtitleWidth)
-
-			const totalWidth =
-				subTitleWidths.reduce((accumulator, current) => accumulator + current, 0) +
-				20.45 /** width of divider with margin */ *
-					Math.floor(subTitleWidths?.length / 2)
-
-			if (totalWidth > subTitlesContainerElementWidth) {
-				subTitlesElements.splice(
-					index /** inserts right before most recent element */,
-					1 /** removes previous divider */,
-					<br />
-				)
-				subTitleWidths = []
-			} else if (index !== subTitlesTemp?.length - 1) {
-				subTitlesElements.push(<span className='divider'> | </span>)
-			}
+			subTitlesElements.push(
+				<React.Fragment key={index}>
+					<h3 className='sub-title'>{text}</h3>
+					{index !== subTitlesTemp.length - 1 && (
+						<span className='divider'> | </span>
+					)}
+				</React.Fragment>
+			)
 		})
 
 		setSubTitles(subTitlesElements)
 		return subTitlesElements
 	}, [controls])
+
+	const toggleSubtitleDividers = useCallback(() => {
+		const subTitleCtrElement = document.getElementById('sub-titles')
+		if (subTitleCtrElement) {
+			const children = subTitleCtrElement.children
+
+			for (let i = 0; i < children.length; i++) {
+				const child = children[i]
+				const bounds = child.getBoundingClientRect()
+				if (children[i - 1]) {
+					const prevChild = children[i - 1] as HTMLElement
+					const prevBounds = prevChild.getBoundingClientRect()
+					if (bounds.y > prevBounds.y && prevChild.className.includes('divider')) {
+						prevChild.style.opacity = '0'
+					} else {
+						prevChild.style.opacity = '1'
+					}
+				}
+			}
+		}
+	}, [])
+
+	useEffect(() => {
+		window.addEventListener('resize', toggleSubtitleDividers)
+	}, [toggleSubtitleDividers])
+
+	useEffect(() => {
+		toggleSubtitleDividers()
+	}, [subTitles])
 
 	const renderTag = () => {
 		if (controls.software && controls.music) {
@@ -110,7 +121,7 @@ const Header: FC<HeaderProps> = () => {
 
 	useEffect(() => {
 		calculateSubTitles()
-	}, [controls, calculateSubTitles])
+	}, [controls, calculateSubTitles, isMobile])
 
 	return (
 		<div className={`Header ${isMobile && 'mobile'}`}>
@@ -140,7 +151,9 @@ const Header: FC<HeaderProps> = () => {
 					</div>
 					<div className='header'>
 						<h1 className='title'>Jacob Fenner</h1>
-						<div className='sub-titles'>{subTitles.map((title) => title)}</div>
+						<div className='sub-titles' id='sub-titles'>
+							{subTitles.map((title) => title)}
+						</div>
 						<p className='tag'>{renderTag()}</p>
 					</div>
 					{!isMobile && <Navigation></Navigation>}

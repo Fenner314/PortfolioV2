@@ -9,7 +9,7 @@ export default function FunFacts() {
 	return (
 		<div className='fun-facts-text'>
 			{isMobile && <MobileNavItem id='fun-facts' label='Fun Facts' />}
-			<ul>
+			<ul style={{ paddingLeft: '1rem' }}>
 				<li>
 					<TextBlock>I can solve a rubiks cube in around one minute</TextBlock>
 				</li>
