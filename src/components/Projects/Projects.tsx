@@ -16,7 +16,7 @@ const Projects: FC<ProjectsProps> = () => {
 
 	return (
 		<div className='Projects'>
-			{isMobile && <MobileNavItem id='projects' label='Project' />}
+			{isMobile && <MobileNavItem id='projects' label='Projects' />}
 			{renderProjects()}
 		</div>
 	)
