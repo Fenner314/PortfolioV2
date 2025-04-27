@@ -2,6 +2,7 @@ import 'assets/scss/main.scss'
 import Content from 'components/Content/Content'
 import Header from 'components/Header/Header'
 import { getControlValue } from 'helpers/functions/get-control-value.helper'
+import { useGoogleAnalytics } from 'hooks/googleAnalytics'
 import { Controls } from 'models/controls.interface'
 import { StorageKeys } from 'models/storage-keys.enum'
 import React, { useEffect, useState } from 'react'
@@ -23,6 +24,8 @@ function App() {
 		music: storageService.get(StorageKeys.Music) === false ? false : true,
 	})
 	const [isMobile, setIsMobile] = useState(false)
+
+	useGoogleAnalytics('G-5ESY74KQ64')
 
 	const determineIsMobile = () => {
 		if (window.innerWidth < 1006) {
