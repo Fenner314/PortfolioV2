@@ -6,6 +6,7 @@ import { useGoogleAnalytics } from 'hooks/googleAnalytics'
 import { Controls } from 'models/controls.interface'
 import { StorageKeys } from 'models/storage-keys.enum'
 import React, { useEffect, useState } from 'react'
+import ReactGA from 'react-ga4'
 import { StorageService } from 'services/storage.service'
 
 export interface ContextProps {
@@ -18,6 +19,8 @@ const storageService = new StorageService()
 
 export const Context = React.createContext({} as ContextProps)
 
+ReactGA.initialize('G-5ESY74KQ64')
+
 function App() {
 	const [controls, setControls] = useState<Controls>({
 		software: storageService.get(StorageKeys.Software) === false ? false : true,
@@ -25,7 +28,7 @@ function App() {
 	})
 	const [isMobile, setIsMobile] = useState(false)
 
-	useGoogleAnalytics('G-5ESY74KQ64')
+	ReactGA.send({ hitType: 'pageview', page: window.location.pathname })
 
 	const determineIsMobile = () => {
 		if (window.innerWidth < 1006) {
@@ -40,6 +43,8 @@ function App() {
 			determineIsMobile()
 		})
 		determineIsMobile()
+
+		ReactGA.send({ hitType: 'pageview', page: window.location.pathname })
 	}, [])
 
 	const contextValue = {
